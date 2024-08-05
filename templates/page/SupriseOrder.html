@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Order Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Surprise Order Form</h2>
+                        <h4>Order for someone,We will deliver at earliest!</h4>
+                    </div>
+                <div class="card-body">
+                <form action= "{% url "ThankYou" %}" method="post" id="form" novalidate onsubmit="validate(event)">
+
+            <!-- Package Selection -->
+            <div class="mb-1">
+            <!-- <div class="form-group"> -->
+            <label for="package">Select Surprise Package:</label>
+            <select class="form-control" id="package" name="package" required>
+                <option value="basic">Basic Surprise</option>
+                <option value="standard">Standard Surprise</option>
+                <option value="premium">Premium Surprise</option>
+            </select>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Delivery Address:</label>
+                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your delivery address" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"><a href="{% url "ThankYou" %}">Place Order</a></button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

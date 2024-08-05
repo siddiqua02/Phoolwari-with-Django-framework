@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        #thankYouContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .thankYouText {
+            font-size: 4em; /* Increased font size */
+            text-align: center;
+            color: #333;
+            text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.7); /* Further increased shadow intensity */
+            width: 90%; /* Further increased width */
+            margin: 0 auto; /* Center the element */
+        }
+    </style>
+</head>
+<body>
+    <div id="thankYouContainer">
+        <div class="thankYouText" id="thankYouMessage">
+            <h2>Thank You, {{username}} </h2>
+            Your order has been successfully placed.<br>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

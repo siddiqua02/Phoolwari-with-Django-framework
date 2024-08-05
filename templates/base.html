@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phoolwari {% block title %}{% endblock title %} </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    {% block extracss %}{% endblock extracss %}
+</head>
+<body>
+    {% comment %} navbar {% endcomment %}
+    {% comment %} <a href="{% url 'index' %}">home page</a> {% endcomment %}
+     <!--Navbar-->
+     <nav class="navbar navbar-expand-lg mb-1 shadow-sm" style="background-color: blanchedalmond;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url "index" %}">
+            <h3>Phoolwari.com</h3>
+            <!-- logo -->
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+          <form class="w-50 m-2">
+            <input type="text" class="form-control rounded-pill p-2" placeholder="Search your desired product">
+          </form>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-flex flex-column justify-content-center align-items-center text-center">
+                  <a class="nav-link" href="{% url "all_flowers" %}"><i class="fa-solid fa-fan fa-lg"></i><br>All flowers</a>
+                </li>
+                <li class="nav-item d-flex flex-column justify-content-center align-items-center text-center">
+                  <a class="nav-link" href="{% url "about" %}"><i class="fa-solid fa-address-card fa-lg"></i><br>About</a>
+                </li>
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="btn  rounded-0 " href="{% url "cart" %}"><i class="fa-solid fa-cart-shopping fa-lg"></i><br>cart</a>
+                  </li>
+                  <div class ='d-flex flex-column justify-content-center align-items-center text-center'>
+
+                    <li class="nav-item "><i class="fa-solid fa-circle-user fa-lg" ></i><br>Hi {{user.first_name}}</h3></li>
+                  </div>
+                    <li class="nav-item">
+                        <a class="btn border border-black m-2 rounded-0 btn-outline-danger" href="{% url "signout" %}">log out</a>
+                    </li> 
+                {% else %}
+                    {% comment %} <li class="nav-item">
+                        <a class="btn border border-black m-2 rounded-0 " href="{% url "signup" %}">Sign up</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a class="btn border border-black m-2 rounded-0 btn-outline-warning " href="{% url "signin" %}">Log In</a>
+                    </li>
+                {% endif %}
+              </ul>
+          </div>
+        </div>
+    </nav>
+
+  
+    {% block content %}
+    
+    {% endblock content %}
+
+    {% block extrajs %}
+    
+
+    {% endblock extrajs %}
+
+
+<!-- Footer -->
+
+
+<footer class="py-3" >
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+              <p>&copy; 2023 Foolwari</p>
+          </div>
+      <div class="col-sm 6 text-end">
+          <i class="fa-brands fa-facebook fa-2xl"></i>
+          <i class="fa-brands fa-twitter fa-2xl"></i>
+          <i class="fa-brands fa-youtube fa-2xl"></i>
+          <i class="fa-brands fa-linkedin fa-2xl"></i>
+      </div>
+      </div>
+  </div>
+</div>
+</footer>
+
+
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.carousel-item{
+    height:550px;
+    
+}
+.bannerimg{
+    height: 450px;
+    width: 100%;
+    border: 30px solid rgb(243, 146, 162);
+}
+.icon{
+    font-size: 4rem;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* .navbar {
+    background-color: #343a40;
+    color: #ffffff;
+} */
+
+/* .jumbotron {
+    background-color: burlywood;
+    color: black;
+} */
+.lead{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card {
+    margin: 20px;
+}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}|| Flower details{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {% if flower %}
+        <div class="row">
+            <div class="col-md-6 p-2">
+                <img src="{{flower.image.url}}" alt="" class="w-100">
+            </div>
+            <div class="col-md-6 p-2">
+                <h4 class="display-4">{{flower.name}}</h4>
+                
+                <p> <i class="fa-solid fa-upload"></i> Origin: {{flower.origin}} </p>
+                <p> <i class="fa-regular fa-calendar-days"></i> life span: {{flower.vase_life}} </p>
+                <p> price: <i class="fa-solid fa-indian-rupee-sign"></i>  {{flower.price}} </p>
+                <p class="lead" style="text-align:justify"> {{flower.description}} </p>
+                <div class="my-3">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'add_to_cart' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="flower_id" value="{{flower.id}}">
+                        
+                        <div class="input-group">
+                            <button type="button" class="btn btn-outline-primary" onclick="decrement()">-</button>
+                            <input type="text" name="quantity" id="quantity" value="1" readonly required>
+                            <button type="button" class="btn btn-outline-primary" onclick="increment()">+</button>
+
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary my-2">Add to cart</button>
+                    </form>
+                    
+                    {% else %}
+                    <a href="{% url 'signin' %}" class="btn btn-outline-primary w-100">Sign In to Buy</a>
+                    {% endif %}
+                </div>
+                {% comment %} <div class='my-3'>
+                    {% if feedback %}
+                        <h3 class="mb-2">Reviews & Ratings</h3>
+                        {% for feedback in feedbacks %}
+                        <div class="card border-0 border-bottom my-1">
+                            <div class="card-body">
+                                <p class="mb-1 text-primary fw-semibold">{{feedback.user.username}}</p>
+                                <p class="mb-1">
+                                    <span class=""></span>
+                                </p> 
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %} {% endcomment %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
+
+{% block extrajs %}
+<script>
+    let quantity=document.getElementById('quantity')
+    function decrement(){
+        if(quantity.value > 1){
+            quantity.value=Number(quantity.value)-1
+        }
+    }
+    function increment(){
+        if(quantity.value < 10){
+            quantity.value=Number(quantity.value)+1
+        }
+    }
+</script>
+{% endblock extrajs %}
+

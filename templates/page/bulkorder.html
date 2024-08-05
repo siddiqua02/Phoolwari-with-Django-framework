@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BulkOrder</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+<body>
+    
+    <img src="{% static "images/comingsoon.jpg" %}" alt="" style="align:center;">
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Bulk Order</h2>
+                        <h4>Order in bulk,we provide best service!</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action= "./thanks.html" method="post" id="form" novalidate onsubmit="validate(event)">
+                            <div class="mb-1">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                                <label class="text-danger" id="name_error"></label>
+                            </div>
+                            <!-- <div class="mb-1">
+                                <label for="">Gender</label>
+                                <input type="radio" class="form-check-input" id="gender" name="gender" value="Male"  required> Male
+                                <input type="radio" class="form-check-input" id="gender" name="gender" value="Female" required> Female
+                                <label class="text-danger" id="gender_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <label for="">Date of Birth</label>
+                                <input type="date" class="form-control" id="dob" min="1990-01-010" max="2005-12-31" required>
+                                <label class="text-danger" id="dob_error"></label>
+                            </div> -->
+                            <div class="mb-1">
+                                <label for="">Mobile Number</label>
+                                <input type="tel" class="form-control" id="mobile" minlength="10" maxlength="10" pattern="[6-9][0-9]{9}]" required>
+                                <label class="text-danger" id="mobile_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <label class="text-danger" id="email_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <label for="address">Address</label>
+                                <textarea rows="5" class="form-control" id="address" required></textarea>
+                                <label class="text-danger" id="address_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <label for="">Country</label>
+                                <select id="country" class="form-control" required>
+                                    <option value="">Select</option>
+                                    <option value="India">India</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <label for="" class="text-danger" id="country_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <label for="">Pin Code</label>
+                                <input type="password" class="form-control" id="password" required>
+                                <label for="" class="text-danger" id="password_error"></label>
+                            </div>
+                            <!-- <div class="mb-1">
+                                <label for="">Confirm Password</label>
+                                <input type="password" class="form-control" id="password2" required>
+                                <label for="" class="text-danger" id="password2_error"></label>
+                            </div> -->
+                            <h3>Order Details</h3>
+                            <div class="mb-1">
+                                <label for="productName">Product Name:</label><br>
+                                <select id="productName" name="productName" required>
+                                  <option value="product1">Rose</option>
+                                  <option value="product2">Lily</option>
+                                  <option value="product3">Jasmine</option>
+                                  <option value="product1">Bouqet</option>
+                                  <option value="product2">Marigold</option>
+                                  <option value="product3">Tulip</option>
+                                </select>
+                                <label for="quantity">Quantity (up to 250 ):</label><br>
+                                <input type="number" id="quantity" name="quantity" min="1" max="250" required>
+                            </div>
+
+                            <div class="mb-1">
+                                <input type="checkbox" class="form-check-input" id="term" required>
+                                <label for="">Agree to terms & coditions</label>
+                                <label class="text-danger" id="term_error"></label>
+                            </div>
+                            <div class="mb-1">
+                                <input type="submit" class="btn btn-primary w-100 my-1" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./form_validator.js"></script>
+</body>
+</html>

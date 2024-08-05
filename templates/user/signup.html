@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+|| Sign Up
+{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign Up</h3>
+                </div>
+                <div class="card-body">
+                    {% for message in messages %}
+                        <p class={{message.tags}}>{{message}}</p>
+                    {% endfor %}
+                    <form action="{% url 'signup' %}" method="POST" id="form" onsubmit="validate(event)">
+                        {% csrf_token %}
+                        <div class="mb-1">
+                            <label for="">First Name</label>
+                            <input type="text" name="first_name" id="first_name"class="form-control" required>
+                            <label class="text-danger" id="first_name_error"></label>
+                        </div>
+                        <div class="mb-1">
+                            <label for="">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control" required>
+                            <label class="text-danger" id="last_name_error"></label>
+                        </div>
+                        <div class="mb-1">
+                            <label for="">Userame</label>
+                            <input type="text" name="username" id="username" class="form-control" required>
+                            <label class="text-danger" id="username_error"></label>
+                        </div>
+                        <div class="mb-1">
+                            <label for="">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                            <label class="text-danger" id="email_error"></label>
+                        </div>
+                        <div class="mb-1">
+                            <label for="">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                            {% comment %} <label class="text-danger" id="password_error"></label> {% endcomment %}
+                        </div>
+                        <div class="mb-1">
+                            <label for="">Confirm Password</label>
+                            <input type="password" name="password2" id="password2" class="form-control" required>
+                            <label class="text-danger" id="password2_error"></label>
+                            
+                        </div>
+                        <div class="mb-1">
+                            <input type="submit" value="Sign Up" class="btn btn-primary w-100">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrajs %}
+{% comment %} <script>
+    function validate(e){
+        password=document.getElementById('password').value
+        password2=document.getElementById('password2').value
+        cnf_password=document.getElementById('cnf_password')    
+        if (password != password2 || password2==""){
+            cnf_password.innerHTML="password does not match"
+            document.getElementById("form").classList.add("was-validated")
+            e.preventDefault()
+            
+        }
+        
+    }
+</script> {% endcomment %}
+<script src="{% static 'js/signup_validator.js' %}" ></script>
+{% endblock extrajs %}
+
